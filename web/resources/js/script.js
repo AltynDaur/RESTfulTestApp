@@ -6,15 +6,18 @@ function Book(name, author, isbn){
 }
 var path = "http://localhost:8080/HelloWorld";
 var addBook = function(){
-    var name = document.getElementById('name');
-    var author = document.getElementById('author');
-    var isbn = document.getElementById('isbn');
+    var name = document.getElementById('name').value;
+    var author = document.getElementById('author').value;
+    var isbn = document.getElementById('isbn').value;
     var addingBook = new Book(name,author,isbn);
     validate(addingBook);
     var xhr = new XMLHttpRequest();
-    var path = path + "/library/books";
+    var path = "http://localhost:8080/HelloWorld/library/books/add";
+
+    var jsonObject = JSON.stringify(addingBook);
     xhr.open("POST",path,true);
-    xhr.send(JSON(addingBook));//TODO send Json object to server
+    xhr.setRequestHeader('Content-type','application/json');
+    xhr.send(jsonObject);//TODO send Json object to server
 }
 var getBook = function (){
     var bookId = document.getElementById('bookId');
@@ -34,3 +37,7 @@ var validate = function(Book){
         return "ISBN should be a number!";
     }
 }
+var bookFilter = new Array();
+bookFilter[0] = "name";
+bookFilter[1] = "author";
+bookFilter[2] = "isbn";
