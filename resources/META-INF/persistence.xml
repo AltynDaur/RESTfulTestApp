@@ -5,7 +5,7 @@
         http://xmlns.jcp.org/xml/ns/persistence
         http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 <persistence-unit name="RestfulApp">
-    <jta-data-source>java</jta-data-source>
+    <jta-data-source>java:jboss/datasources/KitchenDS</jta-data-source>
     <properties>
         <property name="hibernate.hbm2ddl.auto" value="update"/>
         <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
